@@ -1,7 +1,7 @@
 import streams from '../apis/streams';
 import { SIGN_IN, SIGN_OUT, CREATE_STREAM, FETCH_STREAMS, FETCH_STREAM, DELETE_STREAM, EDIT_STREAM } from './types';
 import history from '../history';
-
+//const NodeMediaServer = require('node-media-server');
 export const signIn = (userId) => {
 	return {
 		type: SIGN_IN,
@@ -41,4 +41,5 @@ export const editStream = (id, formValues) => async (dispatch) => {
 export const deleteStream = (id) => async (dispatch) => {
 	await streams.delete(`/streams/${id}`);
 	dispatch({ type: DELETE_STREAM, payload: id });
+	history.push('/');
 };
